@@ -1,519 +1,812 @@
 void main() {
+
   // ============================================================
-  // DART COLLECTIONS: SET, MAP, LIST
-  // ============================================================
-  //
-  // Collection = an object used to store multiple values.
-  //
-  // Main Dart collections:
-  //
-  // List -> ordered values, accessed by index
-  // Set  -> unique values, no duplicates
-  // Map  -> key-value pairs
-  //
+  // DART - DAY 5
+  // COLLECTIONS: SET
   // ============================================================
 
-  // ------------------------------------------------------------
-  // 1. SET
-  // ------------------------------------------------------------
-  // Set stores UNIQUE values.
-  // Duplicate values are automatically ignored.
+
+  // ============================================================
+  // 1. WHAT IS A SET?
+  // ============================================================
+
+  // Set is a collection of UNIQUE values.
   //
-  // Syntax:
-  // Set<DataType> variableName = {value1, value2};
+  // A Set:
+  // - does not allow duplicate values
+  // - automatically ignores duplicate values
+  // - stores each value only once
+  //
+  // Example:
+  //
+  // {"Ram", "Hari", "Ram"}
+  //
+  // becomes:
+  //
+  // {"Ram", "Hari"}
 
-  Set<String> names = {"hari", "sita"};
 
-  print(names); // {hari, sita}
+  // ============================================================
+  // 2. CREATING A SET
+  // ============================================================
 
-  // Add a value
-
-  names.add("rohan");
-
-  print(names); // {hari, sita, rohan}
-
-  // Duplicate value is ignored
-
-  names.add("hari");
-
-  print(names); // {hari, sita, rohan}
-
-  // Add multiple values
-
-  names.addAll({"kailash", "ram"});
+  Set<String> names = {
+    "Hari",
+    "Sita",
+    "Rohan",
+  };
 
   print(names);
 
-  // Remove a value
+  // Output:
+  // {Hari, Sita, Rohan}
 
-  names.remove("ram");
+
+  // ============================================================
+  // 3. SET OF int
+  // ============================================================
+
+  Set<int> numbers = {
+    10,
+    20,
+    30,
+    40,
+  };
+
+  print(numbers);
+
+
+  // ============================================================
+  // 4. SET OF double
+  // ============================================================
+
+  Set<double> prices = {
+    10.5,
+    20.5,
+    30.5,
+  };
+
+  print(prices);
+
+
+  // ============================================================
+  // 5. DUPLICATE VALUES
+  // ============================================================
+
+  Set<String> students = {
+    "Naresh",
+    "Hari",
+    "Naresh",
+  };
+
+  print(students);
+
+  // Output:
+  // {Naresh, Hari}
+  //
+  // "Naresh" appears twice in the code,
+  // but Set stores it only once.
+
+
+  // ============================================================
+  // 6. add()
+  // ============================================================
+
+  // add() adds ONE value to the Set.
+
+  Set<String> names = {
+    "Hari",
+    "Sita",
+  };
+
+  names.add("Rohan");
 
   print(names);
 
-  // Check whether a Set contains a value
+  // {Hari, Sita, Rohan}
 
-  print(names.contains("hari")); // true
-  print(names.contains("ram")); // false
 
-  // Set does not allow duplicate values.
+  // ============================================================
+  // 7. add() WITH DUPLICATE
+  // ============================================================
 
-  Set<String> students = {"Naresh", "Hari", "Naresh"};
+  Set<String> names = {
+    "Hari",
+    "Sita",
+  };
 
-  print(students); // {Naresh, Hari}
+  names.add("Hari");
 
-  // Number of elements
+  print(names);
+
+  // {Hari, Sita}
+  //
+  // Hari is already present,
+  // so the duplicate is ignored.
+
+
+  // ============================================================
+  // 8. addAll()
+  // ============================================================
+
+  // addAll() adds MULTIPLE values.
+
+  Set<String> names = {
+    "Hari",
+    "Sita",
+  };
+
+  names.addAll({
+    "Rohan",
+    "Ram",
+    "Kailash",
+  });
+
+  print(names);
+
+
+  // ============================================================
+  // 9. addAll() WITH DUPLICATES
+  // ============================================================
+
+  Set<int> numbers = {
+    10,
+    20,
+  };
+
+  numbers.addAll({
+    20,
+    30,
+    40,
+    10,
+  });
+
+  print(numbers);
+
+  // Result contains each value only once.
+
+
+  // ============================================================
+  // 10. remove()
+  // ============================================================
+
+  // remove() removes a specific value.
+
+  Set<String> names = {
+    "Ram",
+    "Hari",
+    "Rohan",
+  };
+
+  names.remove("Hari");
+
+  print(names);
+
+  // {Ram, Rohan}
+
+
+  // If the value does not exist,
+  // the Set remains unchanged.
+
+  names.remove("Sita");
+
+  print(names);
+
+
+  // ============================================================
+  // 11. contains()
+  // ============================================================
+
+  // contains() checks whether a value exists.
+  //
+  // Returns:
+  // true  -> value exists
+  // false -> value does not exist
+
+  Set<String> names = {
+    "Hari",
+    "Sita",
+    "Rohan",
+  };
+
+  print(names.contains("Hari"));
+
+  // true
+
+  print(names.contains("Ram"));
+
+  // false
+
+
+  // ============================================================
+  // 12. length
+  // ============================================================
+
+  // length returns the number of UNIQUE elements.
+
+  Set<String> students = {
+    "Naresh",
+    "Hari",
+    "Naresh",
+    "Ram",
+  };
 
   print(students.length);
 
-  // ------------------------------------------------------------
-  // SET IMPORTANT METHODS
-  // ------------------------------------------------------------
+  // Output:
+  // 3
+  //
+  // Because Naresh is stored only once.
 
-  // add()       -> add one value
-  // addAll()    -> add multiple values
-  // remove()    -> remove a value
-  // contains()  -> check whether value exists
-  // length      -> number of elements
-  // isEmpty     -> check whether empty
-  // isNotEmpty  -> check whether not empty
 
   // ============================================================
-  // 2. LIST
+  // 13. isEmpty
   // ============================================================
-  // List stores ORDERED values.
-  // List uses INDEX to access elements.
-  // Index starts from 0.
-  // Duplicate values are allowed.
+
+  // Checks whether the Set contains no elements.
+
+  Set<int> numbers = {};
+
+  print(numbers.isEmpty);
+
+  // true
+
+
+  // ============================================================
+  // 14. isNotEmpty
+  // ============================================================
+
+  // Checks whether the Set contains at least one element.
+
+  Set<int> numbers = {
+    10,
+    20,
+  };
+
+  print(numbers.isNotEmpty);
+
+  // true
+
+
+  // ============================================================
+  // 15. clear()
+  // ============================================================
+
+  // clear() removes ALL elements from the Set.
+
+  Set<String> names = {
+    "Ram",
+    "Hari",
+    "Rohan",
+  };
+
+  names.clear();
+
+  print(names);
+
+  // Output:
+  // {}
+
+
+  // ============================================================
+  // 16. LOOP THROUGH A SET
+  // ============================================================
+
+  // A Set can be iterated using for-in.
+
+  Set<String> names = {
+    "Ram",
+    "Hari",
+    "Rohan",
+  };
+
+  for (String name in names) {
+    print(name);
+  }
+
+
+  // ============================================================
+  // 17. SET DOES NOT USE INDEX
+  // ============================================================
+
+  Set<String> names = {
+    "Ram",
+    "Hari",
+    "Rohan",
+  };
+
+  // You cannot normally access a Set like a List:
   //
-  // Syntax:
-  // List<DataType> variableName = [value1, value2];
-
-  List<String> skills = ["Dart", "Java", "NestJS"];
-
-  // Access using index
-
-  print(skills[0]); // Dart
-  print(skills[1]); // Java
-  print(skills[2]); // NestJS
-
-  // Index starts from 0:
+  // names[0]
   //
-  // 0 -> Dart
-  // 1 -> Java
-  // 2 -> NestJS
+  // A Set is not accessed using numeric indexes.
+  //
+  // Use:
+  //
+  // contains()
+  //
+  // or loop through it.
 
-  // Add one value
+
+  // ============================================================
+  // 18. SET AND DUPLICATES
+  // ============================================================
+
+  Set<int> numbers = {
+    1,
+    2,
+    3,
+    3,
+    4,
+    4,
+    5,
+  };
+
+  print(numbers);
+
+  // Output:
+  // {1, 2, 3, 4, 5}
+
+
+  // ============================================================
+  // 19. PRACTICAL USE: REMOVE DUPLICATES
+  // ============================================================
+
+  // Suppose a List contains duplicate values.
+  //
+  // Converting it to a Set removes duplicates.
+
+  List<int> numbers = [
+    10,
+    20,
+    20,
+    30,
+    30,
+    40,
+  ];
+
+  Set<int> uniqueNumbers = numbers.toSet();
+
+  print(uniqueNumbers);
+
+  // Output:
+  // {10, 20, 30, 40}
+
+
+  // ============================================================
+  // 20. SET OPERATIONS
+  // ============================================================
+
+  // Set is especially useful for mathematical set operations.
+  //
+  // Important operations:
+  //
+  // union
+  // intersection
+  // difference
+
+
+  // ============================================================
+  // 21. UNION
+  // ============================================================
+
+  // union() combines values from both Sets.
+  //
+  // Duplicate values remain only once.
+
+  Set<int> setA = {
+    1,
+    2,
+    3,
+  };
+
+  Set<int> setB = {
+    3,
+    4,
+    5,
+  };
+
+  print(setA.union(setB));
+
+  // Output:
+  // {1, 2, 3, 4, 5}
+
+
+  // ============================================================
+  // 22. INTERSECTION
+  // ============================================================
+
+  // intersection() returns values that exist
+  // in BOTH Sets.
+
+  Set<int> setA = {
+    1,
+    2,
+    3,
+  };
+
+  Set<int> setB = {
+    3,
+    4,
+    5,
+  };
+
+  print(setA.intersection(setB));
+
+  // Output:
+  // {3}
+
+
+  // ============================================================
+  // 23. DIFFERENCE
+  // ============================================================
+
+  // difference() returns values that exist in the
+  // first Set but NOT in the second Set.
+
+  Set<int> setA = {
+    1,
+    2,
+    3,
+  };
+
+  Set<int> setB = {
+    3,
+    4,
+    5,
+  };
+
+  print(setA.difference(setB));
+
+  // Output:
+  // {1, 2}
+
+
+  // ============================================================
+  // 24. DIFFERENCE IN THE OTHER DIRECTION
+  // ============================================================
+
+  print(setB.difference(setA));
+
+  // Output:
+  // {4, 5}
+
+
+  // IMPORTANT:
+  //
+  // A.difference(B)
+  //
+  // means:
+  //
+  // values in A that are NOT in B.
+
+
+  // ============================================================
+  // 25. union() VS intersection() VS difference()
+  // ============================================================
+
+  // A = {1, 2, 3}
+  // B = {3, 4, 5}
+  //
+  //
+  // A.union(B)
+  //     -> {1, 2, 3, 4, 5}
+  //
+  //
+  // A.intersection(B)
+  //     -> {3}
+  //
+  //
+  // A.difference(B)
+  //     -> {1, 2}
+
+
+  // ============================================================
+  // 26. containsAll()
+  // ============================================================
+
+  // containsAll() checks whether a Set contains
+  // ALL values from another collection.
+
+  Set<int> numbers = {
+    1,
+    2,
+    3,
+    4,
+    5,
+  };
+
+  print(numbers.containsAll({
+    1,
+    2,
+    3,
+  }));
+
+  // true
+
+
+  print(numbers.containsAll({
+    1,
+    2,
+    10,
+  }));
+
+  // false
+
+
+  // ============================================================
+  // 27. SUBSET
+  // ============================================================
+
+  // A Set is a subset if all of its values
+  // exist inside another Set.
+
+  Set<int> mainSet = {
+    1,
+    2,
+    3,
+    4,
+    5,
+  };
+
+  Set<int> smallSet = {
+    1,
+    2,
+    3,
+  };
+
+  print(mainSet.containsAll(smallSet));
+
+  // true
+
+
+  // ============================================================
+  // 28. SET FROM LIST
+  // ============================================================
+
+  // toSet() converts a List into a Set.
+
+  List<String> names = [
+    "Ram",
+    "Hari",
+    "Ram",
+    "Rohan",
+    "Hari",
+  ];
+
+  Set<String> uniqueNames = names.toSet();
+
+  print(uniqueNames);
+
+  // Duplicates are removed.
+
+
+  // ============================================================
+  // 29. LIST FROM SET
+  // ============================================================
+
+  // toList() converts a Set into a List.
+
+  Set<String> names = {
+    "Ram",
+    "Hari",
+    "Rohan",
+  };
+
+  List<String> nameList = names.toList();
+
+  print(nameList);
+
+
+  // ============================================================
+  // 30. SET WITH DIFFERENT DATA TYPES
+  // ============================================================
+
+  // Normally use a specific type:
+
+  Set<String> names = {
+    "Ram",
+    "Hari",
+  };
+
+
+  // If different types are genuinely required,
+  // dynamic can be used:
+
+  Set<dynamic> data = {
+    "Ram",
+    23,
+    5.5,
+    true,
+  };
+
+  print(data);
+
+
+  // ============================================================
+  // 31. SET WITH OBJECTS / CUSTOM VALUES
+  // ============================================================
+
+  // Set can also contain objects.
+  //
+  // For beginner-level Dart, remember:
+  //
+  // Set<T>
+  //
+  // where T is the type of value stored.
+
+
+  // ============================================================
+  // 32. IMPORTANT SET METHODS
+  // ============================================================
+
+  // add()
+  //     -> add one value
+  //
+  // addAll()
+  //     -> add multiple values
+  //
+  // remove()
+  //     -> remove a value
+  //
+  // contains()
+  //     -> check whether a value exists
+  //
+  // containsAll()
+  //     -> check whether all given values exist
+  //
+  // clear()
+  //     -> remove all values
+  //
+  // length
+  //     -> number of unique values
+  //
+  // isEmpty
+  //     -> check whether Set is empty
+  //
+  // isNotEmpty
+  //     -> check whether Set is not empty
+  //
+  // union()
+  //     -> combine two Sets
+  //
+  // intersection()
+  //     -> common values
+  //
+  // difference()
+  //     -> values in first Set but not second
+  //
+  // toList()
+  //     -> convert Set to List
+  //
+  // ============================================================
+
+
+  // ============================================================
+  // 33. PRACTICAL EXAMPLE
+  // ============================================================
+
+  Set<String> skills = {
+    "Dart",
+    "Java",
+    "Dart",
+    "NestJS",
+    "Java",
+  };
+
+  print(skills);
+
+  // Output:
+  // {Dart, Java, NestJS}
+
+  print(skills.contains("Dart"));
+
+  // true
 
   skills.add("Spring Boot");
 
   print(skills);
 
-  // Add multiple values
-
-  skills.addAll(["MongoDB", "PostgreSQL"]);
-
-  print(skills);
-
-  // Update value using index
-
-  skills[0] = "Dart Programming";
-
-  print(skills);
-
-  // Remove a value
-
   skills.remove("Java");
 
   print(skills);
 
-  // Remove using index
-
-  skills.removeAt(0);
-
-  print(skills);
-
-  // Check whether a value exists
-
-  print(skills.contains("NestJS")); // true
-
-  // Length
-
   print(skills.length);
 
-  // ------------------------------------------------------------
-  // LIST IMPORTANT METHODS
-  // ------------------------------------------------------------
-
-  // add()        -> add one value
-  // addAll()     -> add multiple values
-  // remove()     -> remove specific value
-  // removeAt()   -> remove using index
-  // contains()   -> check value
-  // length       -> number of elements
-  // isEmpty      -> check whether empty
-  // isNotEmpty   -> check whether not empty
 
   // ============================================================
-  // 3. MAP
+  // 34. SET VS LIST - ONLY IMPORTANT DIFFERENCE
   // ============================================================
-  // Map stores data as KEY -> VALUE.
+
+  // LIST:
   //
-  // Syntax:
+  // List<String> names = [
+  //   "Ram",
+  //   "Hari",
+  //   "Ram",
+  // ];
   //
-  // Map<KeyType, ValueType> variableName = {
-  //   key: value,
-  // };
-
-  Map<String, String> capital = {
-    "nepal": "Kathmandu",
-    "india": "Delhi",
-    "china": "Beijing",
-  };
-
-  // Access value using KEY
-
-  print(capital["nepal"]); // Kathmandu
-  print(capital["india"]); // Delhi
-
-  // Add a new key-value pair
-
-  capital["japan"] = "Tokyo";
-
-  print(capital);
-
-  // Update existing value
-
-  capital["india"] = "New Delhi";
-
-  print(capital);
-
-  // Remove key-value pair
-
-  capital.remove("china");
-
-  print(capital);
-
-  // Check whether a key exists
-
-  print(capital.containsKey("nepal")); // true
-
-  // Check whether a value exists
-
-  print(capital.containsValue("Kathmandu")); // true
-
-  // Number of key-value pairs
-
-  print(capital.length);
-
-  // ------------------------------------------------------------
-  // MAP IMPORTANT METHODS
-  // ------------------------------------------------------------
-
-  // map[key]              -> access value
-  // map[key] = value      -> add/update
-  // remove(key)           -> remove key-value pair
-  // containsKey(key)      -> check key
-  // containsValue(value)  -> check value
-  // length                -> number of pairs
-  // isEmpty               -> check whether empty
-  // isNotEmpty            -> check whether not empty
-
-  // ============================================================
-  // 4. addAll() WITH MAP
-  // ============================================================
-  // addAll() adds all key-value pairs from one Map
-  // into another Map.
-
-  Map<String, String> capital1 = {"nepal": "Kathmandu", "india": "Delhi"};
-
-  Map<String, String> capital2 = {"china": "Beijing", "pakistan": "Islamabad"};
-
-  capital1.addAll(capital2);
-
-  print(capital1);
-
-  // Result:
-  //
-  // {
-  //   nepal: Kathmandu,
-  //   india: Delhi,
-  //   china: Beijing,
-  //   pakistan: Islamabad
-  // }
-
-  // ============================================================
-  // 5. DUPLICATE MAP KEYS
-  // ============================================================
-  // Map cannot have duplicate keys.
-  //
-  // If the same key is added again,
-  // the new value replaces the old value.
-
-  Map<String, String> data = {"name": "Naresh", "age": "25"};
-
-  data["name"] = "Hari";
-
-  print(data);
-
-  // Result:
-  //
-  // {name: Hari, age: 25}
-
-  // ============================================================
-  // 6. MAP WITH DYNAMIC VALUES
-  // ============================================================
-  // dynamic allows different types of values.
-  //
-  // name      -> String
-  // age       -> int
-  // isStudent -> bool
-  // skills    -> List<String>
-
-  Map<String, dynamic> person = {
-    "name": "Naresh",
-    "age": 25,
-    "isStudent": true,
-    "skills": ["Dart", "Java", "NestJS"],
-  };
-
-  print(person);
-
-  // Access individual values using keys
-
-  print(person["name"]); // Naresh
-  print(person["age"]); // 25
-  print(person["isStudent"]); // true
-  print(person["skills"]); // [Dart, Java, NestJS]
-
-  // ============================================================
-  // 7. LIST INSIDE A MAP
-  // ============================================================
-  // A Map can contain a List as its value.
-
-  Map<String, dynamic> person2 = {
-    "name": "Naresh",
-    "skills": ["Dart", "Java", "NestJS"],
-  };
-
-  // person2["skills"]
-  //        ↓
-  // ["Dart", "Java", "NestJS"]
-  //
-  // [1] means index 1.
-  //
-  // 0 -> Dart
-  // 1 -> Java
-  // 2 -> NestJS
-
-  print((person2["skills"] as List)[1]); // Java
-
-  // ============================================================
-  // 8. NESTED MAP
-  // ============================================================
-  // A Map inside another Map is called a Nested Map.
-
-  Map<String, dynamic> student = {
-    "name": "Naresh",
-    "age": 25,
-
-    "address": {"city": "Dhangadhi", "country": "Nepal"},
-  };
-
-  print(student["name"]); // Naresh
-
-  // Access nested Map value
-
-  print((student["address"] as Map)["city"]); // Dhangadhi
-
-  print((student["address"] as Map)["country"]); // Nepal
-
-  // Structure:
-  //
-  // student
-  //    |
-  //    └── address
-  //          |
-  //          ├── city
-  //          └── country
-
-  // ============================================================
-  // 9. NESTED MAP + LIST
-  // ============================================================
-  // A Map can contain both another Map and a List.
-
-  Map<String, dynamic> person3 = {
-    "name": "Naresh",
-
-    "address": {"city": "Dhangadhi", "country": "Nepal"},
-
-    "skills": ["Dart", "Java", "NestJS"],
-  };
-
-  // Nested Map
-
-  print((person3["address"] as Map)["city"]); // Dhangadhi
-
-  // List inside Map
-
-  print((person3["skills"] as List)[1]); // Java
-
-  // ============================================================
-  // 10. DEEPLY NESTED MAP
-  // ============================================================
-  // A Map can contain another Map,
-  // which can contain another Map.
-
-  Map<String, dynamic> user = {
-    "name": "Naresh",
-
-    "profile": {
-      "age": 25,
-      "isStudent": true,
-
-      "address": {"city": "Dhangadhi", "country": "Nepal"},
-    },
-  };
-
-  print(user["name"]); // Naresh
-
-  // Map -> Map -> Map -> value
-
-  print(((user["profile"] as Map)["address"] as Map)["city"]); // Dhangadhi
-
-  // Structure:
-  //
-  // user
-  //   |
-  //   └── profile
-  //         |
-  //         └── address
-  //               |
-  //               ├── city
-  //               └── country
-
-  // ============================================================
-  // 11. MAP + NESTED MAP + LIST
-  // ============================================================
-
-  Map<String, dynamic> employee = {
-    "name": "Naresh",
-
-    "job": {
-      "title": "Backend Developer",
-      "company": "ABC Company",
-
-      "skills": ["Dart", "Java", "NestJS"],
-    },
-  };
-
-  print(employee["name"]); // Naresh
-
-  // Nested Map
-
-  print((employee["job"] as Map)["title"]); // Backend Developer
-
-  // Nested List
-
-  print((employee["job"] as Map)["skills"]); // [Dart, Java, NestJS]
-
-  // Access List element inside nested Map
-
-  print(((employee["job"] as Map)["skills"] as List)[1]); // Java
-
-  // Structure:
-  //
-  // employee
-  //    |
-  //    └── job
-  //         |
-  //         ├── title
-  //         ├── company
-  //         |
-  //         └── skills
-  //                |
-  //                ├── [0] Dart
-  //                ├── [1] Java
-  //                └── [2] NestJS
-
-  // ============================================================
-  // 12. LIST vs SET vs MAP
-  // ============================================================
-
-  // ------------------------------------------------------------
-  // LIST
-  // ------------------------------------------------------------
-  // Ordered collection.
-  // Accessed using INDEX.
   // Duplicates are allowed.
+  // Access using index.
+  //
+  //
+  // SET:
+  //
+  // Set<String> names = {
+  //   "Ram",
+  //   "Hari",
+  //   "Ram",
+  // };
+  //
+  // Duplicates are ignored.
+  // Not accessed using normal numeric indexing.
 
-  List<String> fruits = ["apple", "banana", "apple"];
-
-  print(fruits[0]); // apple
-
-  // ------------------------------------------------------------
-  // SET
-  // ------------------------------------------------------------
-  // Unique collection.
-  // Duplicates are not allowed.
-
-  Set<String> uniqueFruits = {"apple", "banana", "apple"};
-
-  print(uniqueFruits); // {apple, banana}
-
-  // ------------------------------------------------------------
-  // MAP
-  // ------------------------------------------------------------
-  // Key-value collection.
-  // Accessed using KEY.
-  // Keys must be unique.
-
-  Map<String, String> countries = {"Nepal": "Kathmandu", "India": "Delhi"};
-
-  print(countries["Nepal"]); // Kathmandu
 
   // ============================================================
-  // 13. LIST vs SET vs MAP - QUICK DIFFERENCE
+  // 35. SET CORE CONCEPT
   // ============================================================
+
+  // Set = UNIQUE COLLECTION
   //
-  // List:
-  // ["Dart", "Java", "NestJS"]
-  //       ↓
-  //     index
-  //       ↓
-  //      [1]
-  //       ↓
-  //     Java
+  // Example:
   //
+  // Input:
   //
-  // Set:
-  // {"Dart", "Java", "Dart"}
-  //                    ↓
-  //              duplicate ignored
+  // {10, 20, 20, 30, 30}
   //
+  // Stored:
   //
-  // Map:
-  // {"name": "Naresh"}
-  //       ↓
-  //      key
-  //       ↓
-  //    ["name"]
-  //       ↓
-  //    Naresh
-  //
-  //
+  // {10, 20, 30}
+
+
   // ============================================================
-  // KEY POINT
+  // DAY 5 FINAL SUMMARY
   // ============================================================
+
+  // Set<T>
+  //     -> creates a typed Set
   //
-  // List = ordered collection + index
+  // add()
+  //     -> add one
   //
-  // Set  = unique collection
+  // addAll()
+  //     -> add multiple
   //
-  // Map  = key-value collection
+  // remove()
+  //     -> remove value
   //
-  // List  -> index -> value
-  // Set   -> value
-  // Map   -> key -> value
+  // contains()
+  //     -> check value
+  //
+  // containsAll()
+  //     -> check multiple values
+  //
+  // length
+  //     -> number of unique values
+  //
+  // isEmpty
+  //     -> empty or not
+  //
+  // isNotEmpty
+  //     -> contains values or not
+  //
+  // clear()
+  //     -> remove everything
+  //
+  // union()
+  //     -> all unique values from both Sets
+  //
+  // intersection()
+  //     -> common values
+  //
+  // difference()
+  //     -> values only in the first Set
+  //
+  // toSet()
+  //     -> convert List to Set
+  //
+  // toList()
+  //     -> convert Set to List
   //
   // ============================================================
 }
