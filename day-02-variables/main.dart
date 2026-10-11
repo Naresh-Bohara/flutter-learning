@@ -11,7 +11,6 @@ void main() {
   // ============================================================
 
   // A variable is a named reference used to store a value.
-//it holds data.
   //
   // Simple definition:
   //
