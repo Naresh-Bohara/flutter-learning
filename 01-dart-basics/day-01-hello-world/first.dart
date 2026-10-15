@@ -15,8 +15,6 @@ void main() {
 
 void main() {
   print("Hello world!");
-  print("My name is Naresh Bohara")
-  print("i am from dhangadhi")
 }
 
 
